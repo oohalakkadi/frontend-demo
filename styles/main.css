@@ -162,7 +162,7 @@ h1, h2, h3, h4, h5, h6 {
 .header {
     background: white;
     border-bottom: 1px solid #e2e8f0;
-    padding: 0 2rem;
+    padding: 0 1rem;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -174,13 +174,13 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     height: 4rem;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 0;
 }
 
 .header-left {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 .sidebar-toggle {
@@ -213,9 +213,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .company-tag {
     font-family: 'Raleway', sans-serif;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     color: #718096;
     font-weight: 400;
+    padding-bottom: 3.8px;
+    align-self: flex-end;
 }
 
 .user-section {
@@ -288,6 +290,7 @@ h1, h2, h3, h4, h5, h6 {
 .role-switcher .role-option {
     padding: 0.75rem 1rem;
     cursor: pointer;
+    font-size: 0.875rem;
     transition: background-color 0.2s ease;
     display: flex;
     align-items: center;
@@ -309,6 +312,7 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
     transition: background-color 0.2s ease;
     display: flex;
+    font-size: 0.875rem;
     align-items: center;
     gap: 0.5rem;
 }
@@ -377,7 +381,7 @@ h1, h2, h3, h4, h5, h6 {
     flex: 1;
     padding: 2rem;
     overflow-y: auto;
-    height: calc(100vh - 4rem);
+    height: flex;
 }
 
 .content-page {
@@ -576,7 +580,7 @@ h1, h2, h3, h4, h5, h6 {
     background: #4a5568;
     color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
+    padding: 0.7rem 1.5rem;
     border-radius: 8px;
     cursor: pointer;
     font-size: 0.875rem;
@@ -702,6 +706,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     gap: 1rem;
     margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
     align-items: center;
 }
 
@@ -758,14 +763,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .applicants-table-container {
-    flex: 1;
+    /* flex: 1; */
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 
 .applicant-viewer {
-    width: 350px;
+    width: 400px;
     background: white;
     border-radius: 12px;
     border: 1px solid #e2e8f0;
@@ -1125,11 +1130,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Ingestion Styles */
 .ingestion-content {
-    height: calc(100vh - 12rem);
-    overflow-y: auto;
+    height: flex;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .ingestion-grid {
@@ -1158,7 +1162,9 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px dashed #e2e8f0;
     border-radius: 12px;
     padding: 1.5rem;
+    align-content: center;
     text-align: center;
+    min-height: 222px;
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -1230,8 +1236,6 @@ h1, h2, h3, h4, h5, h6 {
     padding: 1.5rem;
     border-radius: 12px;
     border: 1px solid #e2e8f0;
-    flex: 1;
-    min-height: 0;
     display: flex;
     flex-direction: column;
 }
@@ -1316,8 +1320,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .content-area {
-        padding: 1rem;
-        height: auto;
+        padding: 0.75rem;
     }
     
     .dashboard-grid {
@@ -1335,7 +1338,6 @@ h1, h2, h3, h4, h5, h6 {
     
     .applicant-viewer {
         width: 100%;
-        height: auto;
         max-height: 60vh;
     }
     

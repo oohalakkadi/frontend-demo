@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Open Gray Matter in Browser",
+			"type": "shell",
+			"command": "open index.html",
+			"group": "build",
+			"isBackground": false
+		}
+	]
+}

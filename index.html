@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gray Matter - Recruitment System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prociono&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing-page" class="page-container">
+        <div class="landing-content">
+            <div class="logo-section">
+                <h1 class="logo"><i class="fas fa-brain"></i> Gray Matter</h1>
+                <p class="tagline">Intelligent Recruitment Management</p>
+            </div>
+            <button class="cta-button" onclick="showSignIn()">
+                <i class="fas fa-arrow-right"></i>
+                Get Started
+            </button>
+        </div>
+    </div>
+
+    <!-- Sign In Page -->
+    <div id="signin-page" class="page-container hidden">
+        <div class="signin-container">
+            <div class="signin-form">
+                <h2>Welcome Back</h2>
+                <form onsubmit="signIn(event)">
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email address" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="signin-button">Sign In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="main-app" class="page-container hidden">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <button class="sidebar-toggle" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="logo"><i class="fas fa-brain"></i> Gray Matter <span class="company-tag">by Buxton Consulting</span></div>
+                </div>
+                <div class="user-section">
+                    <div class="user-info" onclick="toggleUserDropdown()">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="user-details">
+                            <span class="user-name">John Doe</span>
+                            <span class="user-role" id="current-role">Recruiter</span>
+                        </div>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </div>
+                    <div class="user-dropdown hidden" id="user-dropdown">
+                        <div class="role-switcher">
+                            <div class="role-option" onclick="switchRole('Recruiter')">
+                                <i class="fas fa-search"></i> Recruiter
+                            </div>
+                            <div class="role-option" onclick="switchRole('Technical Manager')">
+                                <i class="fas fa-code"></i> Technical Manager
+                            </div>
+                            <div class="role-option" onclick="switchRole('Account Manager')">
+                                <i class="fas fa-briefcase"></i> Account Manager
+                            </div>
+                            <div class="role-option" onclick="switchRole('Admin')">
+                                <i class="fas fa-cog"></i> Admin
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item" onclick="showSettings()">
+                            <i class="fas fa-gear"></i> Settings
+                        </div>
+                        <div class="dropdown-item" onclick="signOut()">
+                            <i class="fas fa-sign-out-alt"></i> Sign Out
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <nav class="sidebar" id="sidebar">
+                <div class="nav-item active" data-page="dashboard" onclick="showPage('dashboard')">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item" data-page="jobs" onclick="showPage('jobs')">
+                    <i class="fas fa-briefcase"></i>
+                    <span>My Jobs</span>
+                </div>
+                <div class="nav-item" data-page="applicants" onclick="showPage('applicants')">
+                    <i class="fas fa-users"></i>
+                    <span>Applicants</span>
+                </div>
+                <div class="nav-item" data-page="ingestion" onclick="showPage('ingestion')">
+                    <i class="fas fa-upload"></i>
+                    <span>Ingestion</span>
+                </div>
+                <!-- Admin-only items -->
+                <div class="admin-only hidden">
+                    <div class="nav-divider"></div>
+                    <div class="nav-item" data-page="audit" onclick="showPage('audit')">
+                        <i class="fas fa-history"></i>
+                        <span>Audit Trail</span>
+                    </div>
+                    <div class="nav-item" data-page="validation" onclick="showPage('validation')">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Validation</span>
+                    </div>
+                    <div class="nav-item" data-page="company-settings" onclick="showPage('company-settings')">
+                        <i class="fas fa-building"></i>
+                        <span>Company Settings</span>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Content Area -->
+            <main class="content-area">
+                <!-- Dashboard Page -->
+                <div id="dashboard-page" class="content-page active">
+                    <div class="page-header">
+                        <h1>Dashboard</h1>
+                        <p>Overview of your recruitment activities</p>
+                    </div>
+                    
+                    <div class="dashboard-grid">
+                        <div class="metric-card">
+                            <div class="metric-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="metric-info">
+                                <h3>Active Jobs</h3>
+                                <div class="metric-value">24</div>
+                                <div class="metric-chart">
+                                    <div class="chart-bar" style="--height: 70%"></div>
+                                    <div class="chart-bar" style="--height: 85%"></div>
+                                    <div class="chart-bar" style="--height: 60%"></div>
+                                    <div class="chart-bar" style="--height: 90%"></div>
+                                    <div class="chart-bar" style="--height: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="metric-info">
+                                <h3>Total Applicants</h3>
+                                <div class="metric-value">156</div>
+                                <div class="progress-ring">
+                                    <svg width="60" height="60">
+                                        <circle cx="30" cy="30" r="25" stroke="#e2e8f0" stroke-width="4" fill="none"/>
+                                        <circle cx="30" cy="30" r="25" stroke="#4a5568" stroke-width="4" fill="none" 
+                                                stroke-dasharray="157" stroke-dashoffset="47" class="progress-circle"/>
+                                    </svg>
+                                    <span class="progress-text">70%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="metric-info">
+                                <h3>Interviews This Week</h3>
+                                <div class="metric-value">8</div>
+                                <div class="trend-indicator up">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>+12%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="metric-info">
+                                <h3>Avg. Time to Close</h3>
+                                <div class="metric-value">12 days</div>
+                                <div class="trend-indicator down">
+                                    <i class="fas fa-arrow-down"></i>
+                                    <span>-8%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-section">
+                        <h2>Recent Activity</h2>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <i class="fas fa-user-plus"></i>
+                                <div class="activity-content">
+                                    <span>New applicant for Senior Developer position</span>
+                                    <small>2 hours ago</small>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-calendar"></i>
+                                <div class="activity-content">
+                                    <span>Interview scheduled with Sarah Johnson</span>
+                                    <small>4 hours ago</small>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div class="activity-content">
+                                    <span>Frontend Engineer position filled</span>
+                                    <small>1 day ago</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jobs Page -->
+                <div id="jobs-page" class="content-page">
+                    <div class="page-header">
+                        <h1>My Jobs</h1>
+                        <button class="primary-button">
+                            <i class="fas fa-plus"></i>
+                            Post New Job
+                        </button>
+                    </div>
+                    
+                    <div class="filters">
+                        <div class="filter-group">
+                            <button class="filter-button active">All Jobs</button>
+                            <button class="filter-button">Open Jobs</button>
+                            <button class="filter-button">Closed Jobs</button>
+                        </div>
+                    </div>
+
+                    <div class="jobs-grid">
+                        <div class="job-card">
+                            <div class="job-header">
+                                <h3>Senior Frontend Developer</h3>
+                                <span class="job-status open">Open</span>
+                            </div>
+                            <div class="job-details">
+                                <p><i class="fas fa-building"></i> TechCorp Inc.</p>
+                                <p><i class="fas fa-map-marker-alt"></i> San Francisco, CA</p>
+                                <p><i class="fas fa-calendar"></i> Posted 3 days ago</p>
+                            </div>
+                            <div class="job-stats">
+                                <span><i class="fas fa-users"></i> 12 applicants</span>
+                                <span><i class="fas fa-eye"></i> 156 views</span>
+                            </div>
+                        </div>
+
+                        <div class="job-card">
+                            <div class="job-header">
+                                <h3>DevOps Engineer</h3>
+                                <span class="job-status open">Open</span>
+                            </div>
+                            <div class="job-details">
+                                <p><i class="fas fa-building"></i> StartupXYZ</p>
+                                <p><i class="fas fa-map-marker-alt"></i> Remote</p>
+                                <p><i class="fas fa-calendar"></i> Posted 1 week ago</p>
+                            </div>
+                            <div class="job-stats">
+                                <span><i class="fas fa-users"></i> 8 applicants</span>
+                                <span><i class="fas fa-eye"></i> 89 views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Applicants Page -->
+                <div id="applicants-page" class="content-page">
+                    <div class="page-header">
+                        <h1>Applicants</h1>
+                        <button class="primary-button">
+                            <i class="fas fa-plus"></i>
+                            Add Applicant
+                        </button>
+                    </div>
+                    
+                    <div class="applicants-container">
+                        <!-- Applicants Table -->
+                        <div class="applicants-table-container">
+                            <!-- Search Bar -->
+                            <div class="search-container">
+                                <div class="search-input-group">
+                                    <i class="fas fa-search"></i>
+                                    <input type="text" placeholder="Search applicants..." id="applicant-search">
+                                </div>
+                                <div class="filter-dropdown">
+                                    <select id="status-filter">
+                                        <option value="">All Status</option>
+                                        <option value="applied">Applied</option>
+                                        <option value="screening">Screening</option>
+                                        <option value="interviewing">Interviewing</option>
+                                        <option value="hired">Hired</option>
+                                        <option value="rejected">Rejected</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="applicants-table">
+                                <div class="table-header">
+                                    <div class="table-cell">Name</div>
+                                    <div class="table-cell">Position</div>
+                                    <div class="table-cell">Status</div>
+                                    <div class="table-cell">Match Score</div>
+                                    <div class="table-cell">Actions</div>
+                                </div>
+                                
+                                <div class="table-row" data-applicant-id="1">
+                                    <div class="table-cell">
+                                        <div class="applicant-info">
+                                            <div class="applicant-avatar">JD</div>
+                                            <div>
+                                                <div class="applicant-name">John Davis</div>
+                                                <div class="applicant-email">john.davis@email.com</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell">Frontend Developer</div>
+                                    <div class="table-cell">
+                                        <span class="status-badge interviewing">Interviewing</span>
+                                    </div>
+                                    <div class="table-cell">
+                                        <div class="match-score">85%</div>
+                                    </div>
+                                    <div class="table-cell">
+                                        <button class="action-button" onclick="showApplicantViewer(1)">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-button">
+                                            <i class="fas fa-calendar"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="table-row" data-applicant-id="2">
+                                    <div class="table-cell">
+                                        <div class="applicant-info">
+                                            <div class="applicant-avatar">SM</div>
+                                            <div>
+                                                <div class="applicant-name">Sarah Miller</div>
+                                                <div class="applicant-email">sarah.miller@email.com</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell">DevOps Engineer</div>
+                                    <div class="table-cell">
+                                        <span class="status-badge applied">Applied</span>
+                                    </div>
+                                    <div class="table-cell">
+                                        <div class="match-score">92%</div>
+                                    </div>
+                                    <div class="table-cell">
+                                        <button class="action-button" onclick="showApplicantViewer(2)">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-button">
+                                            <i class="fas fa-calendar"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="table-row" data-applicant-id="3">
+                                    <div class="table-cell">
+                                        <div class="applicant-info">
+                                            <div class="applicant-avatar">MJ</div>
+                                            <div>
+                                                <div class="applicant-name">Michael Johnson</div>
+                                                <div class="applicant-email">m.johnson@email.com</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell">Backend Developer</div>
+                                    <div class="table-cell">
+                                        <span class="status-badge rejected">Rejected</span>
+                                    </div>
+                                    <div class="table-cell">
+                                        <div class="match-score">67%</div>
+                                    </div>
+                                    <div class="table-cell">
+                                        <button class="action-button" onclick="showApplicantViewer(3)">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-button">
+                                            <i class="fas fa-calendar"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="table-row" data-applicant-id="4">
+                                    <div class="table-cell">
+                                        <div class="applicant-info">
+                                            <div class="applicant-avatar">AB</div>
+                                            <div>
+                                                <div class="applicant-name">Alice Brown</div>
+                                                <div class="applicant-email">alice.brown@email.com</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell">UI/UX Designer</div>
+                                    <div class="table-cell">
+                                        <span class="status-badge hired">Hired</span>
+                                    </div>
+                                    <div class="table-cell">
+                                        <div class="match-score">96%</div>
+                                    </div>
+                                    <div class="table-cell">
+                                        <button class="action-button" onclick="showApplicantViewer(4)">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-button">
+                                            <i class="fas fa-calendar"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="table-row" data-applicant-id="5">
+                                    <div class="table-cell">
+                                        <div class="applicant-info">
+                                            <div class="applicant-avatar">RW</div>
+                                            <div>
+                                                <div class="applicant-name">Robert Wilson</div>
+                                                <div class="applicant-email">r.wilson@email.com</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell">Data Scientist</div>
+                                    <div class="table-cell">
+                                        <span class="status-badge screening">Screening</span>
+                                    </div>
+                                    <div class="table-cell">
+                                        <div class="match-score">78%</div>
+                                    </div>
+                                    <div class="table-cell">
+                                        <button class="action-button" onclick="showApplicantViewer(5)">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-button">
+                                            <i class="fas fa-calendar"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Applicant Viewer (Always Visible on Right) -->
+                        <div class="applicant-viewer" id="applicant-viewer">
+                            <div class="viewer-header">
+                                <h3>Applicant Profile</h3>
+                            </div>
+                            <div class="viewer-content">
+                                <div class="empty-state" id="empty-state">
+                                    <i class="fas fa-user-circle"></i>
+                                    <p>Select an applicant to view details</p>
+                                </div>
+                                <div class="profile-content hidden" id="profile-content">
+                                    <div class="applicant-photo">
+                                        <div class="photo-placeholder" id="viewer-avatar">JD</div>
+                                    </div>
+                                    <div class="applicant-details">
+                                        <h4 id="viewer-name">John Davis</h4>
+                                        <p id="viewer-email">john.davis@email.com</p>
+                                        <p id="viewer-phone">+1 (555) 123-4567</p>
+                                    </div>
+                                    
+                                    <div class="detail-section">
+                                        <h5>Position Applied</h5>
+                                        <p id="viewer-position">Frontend Developer</p>
+                                    </div>
+                                    
+                                    <div class="detail-section">
+                                        <h5>Experience</h5>
+                                        <p id="viewer-experience">5 years in React, JavaScript, TypeScript</p>
+                                    </div>
+                                    
+                                    <div class="detail-section">
+                                        <h5>Skills</h5>
+                                        <div class="skills-tags" id="viewer-skills">
+                                            <span class="skill-tag">React</span>
+                                            <span class="skill-tag">JavaScript</span>
+                                            <span class="skill-tag">TypeScript</span>
+                                            <span class="skill-tag">CSS</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="detail-section">
+                                        <h5>Status</h5>
+                                        <span class="status-badge interviewing" id="viewer-status">Interviewing</span>
+                                    </div>
+                                    
+                                    <div class="detail-section">
+                                        <h5>Match Score</h5>
+                                        <div class="match-circle">
+                                            <span id="viewer-match">85%</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="detail-section">
+                                        <h5>Resume</h5>
+                                        <button class="secondary-button">
+                                            <i class="fas fa-file-pdf"></i>
+                                            View Formatted Resume
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="detail-section">
+                                        <h5>Notes</h5>
+                                        <textarea placeholder="Add notes about this applicant..." rows="3"></textarea>
+                                    </div>
+                                    
+                                    <div class="viewer-actions">
+                                        <button class="action-btn primary">
+                                            <i class="fas fa-calendar"></i>
+                                            Schedule Interview
+                                        </button>
+                                        <button class="action-btn secondary">
+                                            <i class="fas fa-envelope"></i>
+                                            Send Email
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ingestion Page -->
+                <div id="ingestion-page" class="content-page">
+                    <div class="page-header">
+                        <h1>Resume Ingestion</h1>
+                        <p>Upload and process candidate resumes</p>
+                    </div>
+                    
+                    <div class="ingestion-content">
+                        <div class="ingestion-grid">
+                            <!-- File Upload Section -->
+                            <div class="upload-section">
+                                <h3>File Upload</h3>
+                                <div class="upload-area">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <h4>Drop files here or click to upload</h4>
+                                    <p>Supported formats: PDF, DOC, DOCX</p>
+                                    <input type="file" multiple accept=".pdf,.doc,.docx" style="display: none;">
+                                </div>
+                            </div>
+
+                            <!-- Email Ingestion Section -->
+                            <div class="email-ingestion-section">
+                                <h3>Outlook Email Ingestion</h3>
+                                <div class="email-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="start-date">Start Date</label>
+                                            <input type="date" id="start-date" name="start-date">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="end-date">End Date</label>
+                                            <input type="date" id="end-date" name="end-date">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email-folder">Email Folder</label>
+                                        <select id="email-folder" name="email-folder">
+                                            <option value="inbox">Inbox</option>
+                                            <option value="resumes">Resumes</option>
+                                            <option value="candidates">Candidates</option>
+                                            <option value="applications">Applications</option>
+                                        </select>
+                                    </div>
+                                    <button class="primary-button">
+                                        <i class="fas fa-download"></i>
+                                        Scan Outlook Inbox
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="processing-queue">
+                            <h3>Processing Queue</h3>
+                            <div class="queue-items">
+                                <div class="queue-item">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>resume_john_doe.pdf</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 75%"></div>
+                                    </div>
+                                    <span class="status">Processing...</span>
+                                </div>
+                                <div class="queue-item">
+                                    <i class="fas fa-file-word"></i>
+                                    <span>sarah_miller_resume.docx</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%"></div>
+                                    </div>
+                                    <span class="status completed">Completed</span>
+                                </div>
+                                <div class="queue-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>Email: michael.johnson@email.com</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 45%"></div>
+                                    </div>
+                                    <span class="status">Extracting...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Pages -->
+                <div id="audit-page" class="content-page admin-only">
+                    <div class="page-header">
+                        <h1>Audit Trail</h1>
+                        <p>System activity and change tracking</p>
+                    </div>
+                    <div class="audit-content">
+                        <p>Audit trail functionality will be implemented here.</p>
+                    </div>
+                </div>
+
+                <div id="validation-page" class="content-page admin-only">
+                    <div class="page-header">
+                        <h1>Data Validation</h1>
+                        <p>Validate and clean system data</p>
+                    </div>
+                    <div class="validation-content">
+                        <p>Data validation tools will be implemented here.</p>
+                    </div>
+                </div>
+
+                <div id="company-settings-page" class="content-page admin-only">
+                    <div class="page-header">
+                        <h1>Company Settings</h1>
+                        <p>Configure system-wide settings</p>
+                    </div>
+                    <div class="settings-content">
+                        <p>Company configuration options will be implemented here.</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>

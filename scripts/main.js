@@ -387,36 +387,49 @@ function closeCandidateViewer() {
 // Search functionality
 function setupSearch() {
     const searchInput = document.getElementById('candidate-search');
-    const statusFilter = document.getElementById('status-filter');
+    const locationFilter = document.getElementById('location-filter');
+    const employmentFilter = document.getElementById('employment-filter');
     
     if (searchInput) {
         searchInput.addEventListener('input', filterCandidates);
     }
     
-    if (statusFilter) {
-        statusFilter.addEventListener('change', filterCandidates);
+    if (locationFilter) {
+        locationFilter.addEventListener('change', filterCandidates);
+    }
+    
+    if (employmentFilter) {
+        employmentFilter.addEventListener('change', filterCandidates);
     }
 }
 
 function filterCandidates() {
     const searchTerm = document.getElementById('candidate-search').value.toLowerCase();
-    const statusFilter = document.getElementById('status-filter').value;
-    const rows = document.querySelectorAll('.table-row');
+    const locationFilter = document.getElementById('location-filter').value;
+    const employmentFilter = document.getElementById('employment-filter').value;
+    const rows = document.querySelectorAll('tbody tr');
     
     rows.forEach(row => {
-        const name = row.querySelector('.candidate-name').textContent.toLowerCase();
-        const email = row.querySelector('.candidate-email').textContent.toLowerCase();
-        const position = row.cells ? row.cells[1].textContent.toLowerCase() : row.children[1].textContent.toLowerCase();
-        const status = row.querySelector('.status-badge').textContent.toLowerCase();
+        // Get candidate data from the row
+        const nameCell = row.querySelector('td:first-child p');
+        const locationCell = row.querySelector('td:nth-child(2) p');
+        const employmentCell = row.querySelector('td:nth-child(4) .bg-gray-500\\/20, td:nth-child(4) .bg-blue-500\\/20, td:nth-child(4) .bg-green-500\\/20, td:nth-child(4) .bg-purple-500\\/20');
         
-        const matchesSearch = name.includes(searchTerm) || 
-                            email.includes(searchTerm) || 
-                            position.includes(searchTerm);
+        if (!nameCell || !locationCell) return;
         
-        const matchesStatus = !statusFilter || status.includes(statusFilter);
+        const name = nameCell.textContent.toLowerCase();
+        const location = locationCell.textContent.toLowerCase();
+        const employment = employmentCell ? employmentCell.textContent.toLowerCase() : '';
         
-        if (matchesSearch && matchesStatus) {
-            row.style.display = 'grid';
+        // Check if row matches search criteria
+        const matchesSearch = name.includes(searchTerm) || location.includes(searchTerm);
+        
+        const matchesLocation = !locationFilter || location.includes(locationFilter.toLowerCase());
+        
+        const matchesEmployment = !employmentFilter || employment.includes(employmentFilter.toLowerCase());
+        
+        if (matchesSearch && matchesLocation && matchesEmployment) {
+            row.style.display = '';
         } else {
             row.style.display = 'none';
         }

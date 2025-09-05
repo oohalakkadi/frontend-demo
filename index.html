@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gray Matter - Recruitment System</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Prociono&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prociono&family=Raleway:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="/public/tailwind.css" />
 </head>
+
 <body>
     <!-- Landing Page -->
     <div id="landing-page" class="page-container">
@@ -54,7 +58,8 @@
                     <button class="sidebar-toggle" onclick="toggleSidebar()">
                         <i class="fas fa-chevron-left"></i>
                     </button>
-                    <div class="logo"><i class="fas fa-brain"></i> Gray Matter <span class="company-tag">by Buxton Consulting</span></div>
+                    <div class="logo"><i class="fas fa-brain"></i> Gray Matter <span class="company-tag">by Buxton
+                            Consulting</span></div>
                 </div>
                 <div class="user-section">
                     <div class="user-info" onclick="toggleUserDropdown()">
@@ -140,7 +145,7 @@
                         <h1>Dashboard</h1>
                         <p>Overview of your recruitment activities</p>
                     </div>
-                    
+
                     <div class="dashboard-grid">
                         <div class="metric-card">
                             <div class="metric-icon">
@@ -158,7 +163,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="metric-card">
                             <div class="metric-icon">
                                 <i class="fas fa-users"></i>
@@ -168,15 +173,15 @@
                                 <div class="metric-value">156</div>
                                 <div class="progress-ring">
                                     <svg width="60" height="60">
-                                        <circle cx="30" cy="30" r="25" stroke="#e2e8f0" stroke-width="4" fill="none"/>
-                                        <circle cx="30" cy="30" r="25" stroke="#4a5568" stroke-width="4" fill="none" 
-                                                stroke-dasharray="157" stroke-dashoffset="47" class="progress-circle"/>
+                                        <circle cx="30" cy="30" r="25" stroke="#e2e8f0" stroke-width="4" fill="none" />
+                                        <circle cx="30" cy="30" r="25" stroke="#4a5568" stroke-width="4" fill="none"
+                                            stroke-dasharray="157" stroke-dashoffset="47" class="progress-circle" />
                                     </svg>
                                     <span class="progress-text">70%</span>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="metric-card">
                             <div class="metric-icon">
                                 <i class="fas fa-calendar-check"></i>
@@ -190,7 +195,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="metric-card">
                             <div class="metric-icon">
                                 <i class="fas fa-chart-line"></i>
@@ -243,7 +248,7 @@
                             Post New Job
                         </button>
                     </div>
-                    
+
                     <div class="filters">
                         <div class="filter-group">
                             <button class="filter-button active">All Jobs</button>
@@ -287,82 +292,153 @@
                     </div>
                 </div>
 
-               <div id="candidates-page" class="content-page active">
-                    
-                    
+                <!-- Candidates Page -->
+                <div id="candidates-page" class="content-page">
+
+
                     <div class="candidates-container">
                         <!-- Candidates Table -->
                         <div class="candidates-table-container">
                             <div class="page-header">
-                        <h1>Candidates</h1>
-                        <button class="primary-button">
-                            <i class="fas fa-plus"></i>
-                            Add Candidate
-                        </button>
-                    </div><div class="relative flex flex-col w-full h-full text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
-                                <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white rounded-none bg-clip-border">
+                                <h1>Candidates</h1>
+                                <button class="primary-button">
+                                    <i class="fas fa-plus"></i>
+                                    Add Candidate
+                                </button>
+                            </div>
+                            <div
+                                class="relative flex flex-col w-full h-full text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
+                                <div
+                                    class="relative mx-4 mt-4 overflow-fit text-gray-700 bg-white rounded-none bg-clip-border">
                                     <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
-                                        <div class="block w-full overflow-hidden md:w-max">
-                                            <nav>
-                                                <ul role="tablist" class="relative flex flex-row p-1 rounded-lg bg-blue-gray-50 bg-opacity-60">
-                                                    <li role="tab" class="relative flex items-center justify-center w-full h-full px-2 py-1 font-sans text-base antialiased font-normal leading-relaxed text-center bg-transparent cursor-pointer select-none text-blue-gray-900" data-value="all">
-                                                        <div class="z-20 text-inherit">&nbsp;&nbsp;All&nbsp;&nbsp;</div>
-                                                        <div class="absolute inset-0 z-10 h-full bg-white rounded-md shadow"></div>
-                                                    </li>
-                                                    <li role="tab" class="relative flex items-center justify-center w-full h-full px-2 py-1 font-sans text-base antialiased font-normal leading-relaxed text-center bg-transparent cursor-pointer select-none text-blue-gray-900" data-value="active">
-                                                        <div class="z-20 text-inherit">&nbsp;&nbsp;Active&nbsp;&nbsp;</div>
-                                                    </li>
-                                                    <li role="tab" class="relative flex items-center justify-center w-full h-full px-2 py-1 font-sans text-base antialiased font-normal leading-relaxed text-center bg-transparent cursor-pointer select-none text-blue-gray-900" data-value="hired">
-                                                        <div class="z-20 text-inherit">&nbsp;&nbsp;Hired&nbsp;&nbsp;</div>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                        <div class="w-full md:w-72">
-                                            <div class="relative h-10 w-full min-w-[200px]">
-                                                <div class="absolute grid w-5 h-5 top-2/4 right-3 -translate-y-2/4 place-items-center text-blue-gray-500">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-5 h-5">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
-                                                    </svg>
-                                                </div>
-                                                <input class="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 !pr-9 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50" placeholder=" " id="candidate-search">
-                                                <label class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                                                    Search
-                                                </label>
+                                        <div class="flex gap-4 w-full md:w-max">
+                                            <!-- Employment Type Filter -->
+                                            <div class="relative">
+                                                <select
+                                                    class="h-10 px-3 py-2 border border-blue-gray-200 rounded-lg bg-white text-sm font-sans text-blue-gray-700 focus:border-2 focus:border-gray-900 focus:outline-0 min-w-[140px]"
+                                                    id="employment-filter">
+                                                    <option value="">All Employment</option>
+                                                    <option value="Employee">Employee</option>
+                                                    <option value="Subcontractor">Subcontractor</option>
+                                                    <option value="Applicant">Applicant</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- Status Filter -->
+                                            <div class="relative">
+                                                <select
+                                                    class="h-10 px-3 py-2 border border-blue-gray-200 rounded-lg bg-white text-sm font-sans text-blue-gray-700 focus:border-2 focus:border-gray-900 focus:outline-0 min-w-[140px]"
+                                                    id="status-filter">
+                                                    <option value="">All Status</option>
+                                                    <option value="Interviewing">Interviewing</option>
+                                                    <option value="On a project">On a project</option>
+                                                    <option value="Rejected">Rejected</option>
+                                                    <option value="Hired">Hired</option>
+                                                    <option value="Screening">Screening</option>
+                                                </select>
                                             </div>
                                         </div>
+                                        <!-- Search -->
+                                        <!-- inside #candidates-page … -->
+                                        <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
+                                            <div class="flex gap-4 w-full md:w-max">
+                                                <!-- your two <select> filters stay as-is -->
+                                            </div>
+
+
+                                            <div class="w-full md:w-72">
+                                                <div class="relative h-10 w-full min-w-[200px]">
+                                                    <!-- icon -->
+                                                    <div
+                                                        class="absolute grid w-5 h-5 top-1/2 right-3 -translate-y-1/2 place-items-center text-blue-gray-500">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                            aria-hidden="true" class="w-5 h-5">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z">
+                                                            </path>
+                                                        </svg>
+                                                    </div>
+
+                                                    <!-- input -->
+                                                    <input id="candidate-search" type="search" placeholder=" " class="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent
+                    px-3 py-2.5 !pr-9 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all
+                    placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200
+                    focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0
+                    disabled:border-0 disabled:bg-blue-gray-50" autocomplete="off" />
+
+                                                    <!-- floating label -->
+                                                    <label for="candidate-search" class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full
+                    select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all
+                    before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5
+                    before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all
+                    after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block before:content-[''] after:content-['']
+                    after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all
+                    peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500
+                    peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent
+                    peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900
+                    peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900
+                    peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900
+                    peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent
+                    peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                                                        Search
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
                                     </div>
                                 </div>
                                 <div class="p-6 px-0 overflow-scroll">
-                                    <table class="w-full mt-4 text-left table-auto min-w-max">
+                                    <table class="w-full text-left table-auto min-w-max">
                                         <thead>
                                             <tr>
                                                 <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">Name</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                        Name</p>
                                                 </th>
                                                 <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">Location</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                        Location</p>
                                                 </th>
                                                 <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">Latest Role</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                        Latest Role</p>
                                                 </th>
                                                 <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">Employment</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                        Employment</p>
                                                 </th>
                                                 <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">Status</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                        Status</p>
                                                 </th>
                                                 <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">Availability</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                        Availability</p>
                                                 </th>
                                                 <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">Last Active</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                        Last Active</p>
                                                 </th>
                                                 <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">Top Skills</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                        Top Skills</p>
                                                 </th>
                                                 <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">Actions</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                        Actions</p>
                                                 </th>
                                             </tr>
                                         </thead>
@@ -370,62 +446,96 @@
                                             <tr data-candidate-id="1" class="cursor-pointer hover:bg-gray-50 selected">
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex items-center gap-3">
-                                                        <div class="relative inline-block h-9 w-9 rounded-full bg-gray-200 flex items-center justify-center font-semibold text-gray-600">JD</div>
+                                                        <div
+                                                            class="relative inline-block h-9 w-9 rounded-full bg-gray-200 flex items-center justify-center font-semibold text-gray-600">
+                                                            JD</div>
                                                         <div class="flex flex-col">
-                                                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">John Davis</p>
-                                                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">john.davis@email.com</p>
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                                John Davis</p>
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                                john.davis@email.com</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">Melbourne, VIC</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                        Melbourne, VIC</p>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex flex-col">
-                                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">Frontend Developer</p>
-                                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">TechCorp</p>
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                            Frontend Developer</p>
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                            TechCorp</p>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="w-max">
-                                                        <div class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-blue-900 uppercase rounded-md select-none whitespace-nowrap bg-blue-500/20">
+                                                        <div
+                                                            class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-blue-900 uppercase rounded-md select-none whitespace-nowrap bg-blue-500/20">
                                                             <span>Employee</span>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="w-max">
-                                                        <div class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-orange-900 uppercase rounded-md select-none whitespace-nowrap bg-orange-500/20">
+                                                        <div
+                                                            class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-orange-900 uppercase rounded-md select-none whitespace-nowrap bg-orange-500/20">
                                                             <span>Interviewing</span>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">15/01/2025</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                        15/01/2025</p>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">02/01/2025</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                        02/01/2025</p>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex flex-wrap gap-1">
                                                         <span class="px-2 py-1 text-xs bg-gray-100 rounded">React</span>
-                                                        <span class="px-2 py-1 text-xs bg-gray-100 rounded">TypeScript</span>
-                                                        <span class="px-2 py-1 text-xs bg-gray-100 rounded">Node.js</span>
+                                                        <span
+                                                            class="px-2 py-1 text-xs bg-gray-100 rounded">TypeScript</span>
+                                                        <span
+                                                            class="px-2 py-1 text-xs bg-gray-100 rounded">Node.js</span>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex gap-2">
-                                                        <button class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" title="Download Resume">
-                                                            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4">
-                                                                    <path fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z" clip-rule="evenodd"></path>
+                                                        <button
+                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                            type="button" title="Download Resume">
+                                                            <span
+                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="currentColor"
+                                                                    aria-hidden="true" class="w-4 h-4">
+                                                                    <path fill-rule="evenodd"
+                                                                        d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z"
+                                                                        clip-rule="evenodd"></path>
                                                                 </svg>
                                                             </span>
                                                         </button>
-                                                        <button class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" title="Edit Candidate">
-                                                            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4">
-                                                                    <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z"></path>
+                                                        <button
+                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                            type="button" title="Edit Candidate">
+                                                            <span
+                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="currentColor"
+                                                                    aria-hidden="true" class="w-4 h-4">
+                                                                    <path
+                                                                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
+                                                                    </path>
                                                                 </svg>
                                                             </span>
                                                         </button>
@@ -435,62 +545,96 @@
                                             <tr data-candidate-id="2" class="cursor-pointer hover:bg-gray-50">
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex items-center gap-3">
-                                                        <div class="relative inline-block h-9 w-9 rounded-full bg-gray-200 flex items-center justify-center font-semibold text-gray-600">SM</div>
+                                                        <div
+                                                            class="relative inline-block h-9 w-9 rounded-full bg-gray-200 flex items-center justify-center font-semibold text-gray-600">
+                                                            SM</div>
                                                         <div class="flex flex-col">
-                                                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">Sarah Miller</p>
-                                                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">sarah.miller@email.com</p>
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                                Sarah Miller</p>
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                                sarah.miller@email.com</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">Sydney, NSW</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                        Sydney, NSW</p>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex flex-col">
-                                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">DevOps Engineer</p>
-                                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">CloudTech</p>
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                            DevOps Engineer</p>
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                            CloudTech</p>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="w-max">
-                                                        <div class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-purple-900 uppercase rounded-md select-none whitespace-nowrap bg-purple-500/20">
+                                                        <div
+                                                            class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-purple-900 uppercase rounded-md select-none whitespace-nowrap bg-purple-500/20">
                                                             <span>Subcontractor</span>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="w-max">
-                                                        <div class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20">
+                                                        <div
+                                                            class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20">
                                                             <span>On a project</span>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">01/03/2025</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                        01/03/2025</p>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">28/12/2024</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                        28/12/2024</p>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex flex-wrap gap-1">
                                                         <span class="px-2 py-1 text-xs bg-gray-100 rounded">AWS</span>
-                                                        <span class="px-2 py-1 text-xs bg-gray-100 rounded">Docker</span>
-                                                        <span class="px-2 py-1 text-xs bg-gray-100 rounded">Kubernetes</span>
+                                                        <span
+                                                            class="px-2 py-1 text-xs bg-gray-100 rounded">Docker</span>
+                                                        <span
+                                                            class="px-2 py-1 text-xs bg-gray-100 rounded">Kubernetes</span>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex gap-2">
-                                                        <button class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" title="Download Resume">
-                                                            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4">
-                                                                    <path fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z" clip-rule="evenodd"></path>
+                                                        <button
+                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                            type="button" title="Download Resume">
+                                                            <span
+                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="currentColor"
+                                                                    aria-hidden="true" class="w-4 h-4">
+                                                                    <path fill-rule="evenodd"
+                                                                        d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z"
+                                                                        clip-rule="evenodd"></path>
                                                                 </svg>
                                                             </span>
                                                         </button>
-                                                        <button class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" title="Edit Candidate">
-                                                            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4">
-                                                                    <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z"></path>
+                                                        <button
+                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                            type="button" title="Edit Candidate">
+                                                            <span
+                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="currentColor"
+                                                                    aria-hidden="true" class="w-4 h-4">
+                                                                    <path
+                                                                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
+                                                                    </path>
                                                                 </svg>
                                                             </span>
                                                         </button>
@@ -500,62 +644,97 @@
                                             <tr data-candidate-id="3" class="cursor-pointer hover:bg-gray-50">
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex items-center gap-3">
-                                                        <div class="relative inline-block h-9 w-9 rounded-full bg-gray-200 flex items-center justify-center font-semibold text-gray-600">MJ</div>
+                                                        <div
+                                                            class="relative inline-block h-9 w-9 rounded-full bg-gray-200 flex items-center justify-center font-semibold text-gray-600">
+                                                            MJ</div>
                                                         <div class="flex flex-col">
-                                                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">Michael Johnson</p>
-                                                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">m.johnson@email.com</p>
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                                Michael Johnson</p>
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                                m.johnson@email.com</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">Brisbane, QLD</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                        Brisbane, QLD</p>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex flex-col">
-                                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">Backend Developer</p>
-                                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">DataSoft</p>
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                            Backend Developer</p>
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                            DataSoft</p>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="w-max">
-                                                        <div class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-gray-900 uppercase rounded-md select-none whitespace-nowrap bg-gray-500/20">
+                                                        <div
+                                                            class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-gray-900 uppercase rounded-md select-none whitespace-nowrap bg-gray-500/20">
                                                             <span>Applicant</span>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="w-max">
-                                                        <div class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-red-900 uppercase rounded-md select-none whitespace-nowrap bg-red-500/20">
+                                                        <div
+                                                            class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-red-900 uppercase rounded-md select-none whitespace-nowrap bg-red-500/20">
                                                             <span>Rejected</span>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">20/01/2025</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                        20/01/2025</p>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">05/01/2025</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                        05/01/2025</p>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex flex-wrap gap-1">
-                                                        <span class="px-2 py-1 text-xs bg-gray-100 rounded">Python</span>
-                                                        <span class="px-2 py-1 text-xs bg-gray-100 rounded">Django</span>
-                                                        <span class="px-2 py-1 text-xs bg-gray-100 rounded">PostgreSQL</span>
+                                                        <span
+                                                            class="px-2 py-1 text-xs bg-gray-100 rounded">Python</span>
+                                                        <span
+                                                            class="px-2 py-1 text-xs bg-gray-100 rounded">Django</span>
+                                                        <span
+                                                            class="px-2 py-1 text-xs bg-gray-100 rounded">PostgreSQL</span>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex gap-2">
-                                                        <button class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" title="Download Resume">
-                                                            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4">
-                                                                    <path fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z" clip-rule="evenodd"></path>
+                                                        <button
+                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                            type="button" title="Download Resume">
+                                                            <span
+                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="currentColor"
+                                                                    aria-hidden="true" class="w-4 h-4">
+                                                                    <path fill-rule="evenodd"
+                                                                        d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z"
+                                                                        clip-rule="evenodd"></path>
                                                                 </svg>
                                                             </span>
                                                         </button>
-                                                        <button class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" title="Edit Candidate">
-                                                            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4">
-                                                                    <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z"></path>
+                                                        <button
+                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                            type="button" title="Edit Candidate">
+                                                            <span
+                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="currentColor"
+                                                                    aria-hidden="true" class="w-4 h-4">
+                                                                    <path
+                                                                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
+                                                                    </path>
                                                                 </svg>
                                                             </span>
                                                         </button>
@@ -565,62 +744,96 @@
                                             <tr data-candidate-id="4" class="cursor-pointer hover:bg-gray-50">
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex items-center gap-3">
-                                                        <div class="relative inline-block h-9 w-9 rounded-full bg-gray-200 flex items-center justify-center font-semibold text-gray-600">AB</div>
+                                                        <div
+                                                            class="relative inline-block h-9 w-9 rounded-full bg-gray-200 flex items-center justify-center font-semibold text-gray-600">
+                                                            AB</div>
                                                         <div class="flex flex-col">
-                                                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">Alice Brown</p>
-                                                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">alice.brown@email.com</p>
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                                Alice Brown</p>
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                                alice.brown@email.com</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">Perth, WA</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                        Perth, WA</p>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex flex-col">
-                                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">UI/UX Designer</p>
-                                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">DesignLab</p>
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                            UI/UX Designer</p>
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                            DesignLab</p>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="w-max">
-                                                        <div class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-blue-900 uppercase rounded-md select-none whitespace-nowrap bg-blue-500/20">
+                                                        <div
+                                                            class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-blue-900 uppercase rounded-md select-none whitespace-nowrap bg-blue-500/20">
                                                             <span>Employee</span>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="w-max">
-                                                        <div class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20">
+                                                        <div
+                                                            class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20">
                                                             <span>Hired</span>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">Available now</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                        Available now</p>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">04/01/2025</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                        04/01/2025</p>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex flex-wrap gap-1">
                                                         <span class="px-2 py-1 text-xs bg-gray-100 rounded">Figma</span>
-                                                        <span class="px-2 py-1 text-xs bg-gray-100 rounded">Sketch</span>
-                                                        <span class="px-2 py-1 text-xs bg-gray-100 rounded">Adobe XD</span>
+                                                        <span
+                                                            class="px-2 py-1 text-xs bg-gray-100 rounded">Sketch</span>
+                                                        <span class="px-2 py-1 text-xs bg-gray-100 rounded">Adobe
+                                                            XD</span>
                                                     </div>
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex gap-2">
-                                                        <button class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" title="Download Resume">
-                                                            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4">
-                                                                    <path fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z" clip-rule="evenodd"></path>
+                                                        <button
+                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                            type="button" title="Download Resume">
+                                                            <span
+                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="currentColor"
+                                                                    aria-hidden="true" class="w-4 h-4">
+                                                                    <path fill-rule="evenodd"
+                                                                        d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z"
+                                                                        clip-rule="evenodd"></path>
                                                                 </svg>
                                                             </span>
                                                         </button>
-                                                        <button class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" title="Edit Candidate">
-                                                            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4">
-                                                                    <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z"></path>
+                                                        <button
+                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                            type="button" title="Edit Candidate">
+                                                            <span
+                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="currentColor"
+                                                                    aria-hidden="true" class="w-4 h-4">
+                                                                    <path
+                                                                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
+                                                                    </path>
                                                                 </svg>
                                                             </span>
                                                         </button>
@@ -630,62 +843,96 @@
                                             <tr data-candidate-id="5" class="cursor-pointer hover:bg-gray-50">
                                                 <td class="p-4">
                                                     <div class="flex items-center gap-3">
-                                                        <div class="relative inline-block h-9 w-9 rounded-full bg-gray-200 flex items-center justify-center font-semibold text-gray-600">RW</div>
+                                                        <div
+                                                            class="relative inline-block h-9 w-9 rounded-full bg-gray-200 flex items-center justify-center font-semibold text-gray-600">
+                                                            RW</div>
                                                         <div class="flex flex-col">
-                                                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">Robert Wilson</p>
-                                                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">r.wilson@email.com</p>
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                                Robert Wilson</p>
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                                r.wilson@email.com</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="p-4">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">Adelaide, SA</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                        Adelaide, SA</p>
                                                 </td>
                                                 <td class="p-4">
                                                     <div class="flex flex-col">
-                                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">Data Scientist</p>
-                                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">AnalyticsPro</p>
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                            Data Scientist</p>
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                            AnalyticsPro</p>
                                                     </div>
                                                 </td>
                                                 <td class="p-4">
                                                     <div class="w-max">
-                                                        <div class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-purple-900 uppercase rounded-md select-none whitespace-nowrap bg-purple-500/20">
+                                                        <div
+                                                            class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-purple-900 uppercase rounded-md select-none whitespace-nowrap bg-purple-500/20">
                                                             <span>Subcontractor</span>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="p-4">
                                                     <div class="w-max">
-                                                        <div class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-blue-900 uppercase rounded-md select-none whitespace-nowrap bg-blue-500/20">
+                                                        <div
+                                                            class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-blue-900 uppercase rounded-md select-none whitespace-nowrap bg-blue-500/20">
                                                             <span>Screening</span>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="p-4">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">10/02/2025</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                        10/02/2025</p>
                                                 </td>
                                                 <td class="p-4">
-                                                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">30/12/2024</p>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                        30/12/2024</p>
                                                 </td>
                                                 <td class="p-4">
                                                     <div class="flex flex-wrap gap-1">
-                                                        <span class="px-2 py-1 text-xs bg-gray-100 rounded">Python</span>
+                                                        <span
+                                                            class="px-2 py-1 text-xs bg-gray-100 rounded">Python</span>
                                                         <span class="px-2 py-1 text-xs bg-gray-100 rounded">R</span>
-                                                        <span class="px-2 py-1 text-xs bg-gray-100 rounded">TensorFlow</span>
+                                                        <span
+                                                            class="px-2 py-1 text-xs bg-gray-100 rounded">TensorFlow</span>
                                                     </div>
                                                 </td>
                                                 <td class="p-4">
                                                     <div class="flex gap-2">
-                                                        <button class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" title="Download Resume">
-                                                            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4">
-                                                                    <path fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z" clip-rule="evenodd"></path>
+                                                        <button
+                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                            type="button" title="Download Resume">
+                                                            <span
+                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="currentColor"
+                                                                    aria-hidden="true" class="w-4 h-4">
+                                                                    <path fill-rule="evenodd"
+                                                                        d="M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z"
+                                                                        clip-rule="evenodd"></path>
                                                                 </svg>
                                                             </span>
                                                         </button>
-                                                        <button class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" title="Edit Candidate">
-                                                            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4">
-                                                                    <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z"></path>
+                                                        <button
+                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                            type="button" title="Edit Candidate">
+                                                            <span
+                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="currentColor"
+                                                                    aria-hidden="true" class="w-4 h-4">
+                                                                    <path
+                                                                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
+                                                                    </path>
                                                                 </svg>
                                                             </span>
                                                         </button>
@@ -696,10 +943,16 @@
                                     </table>
                                 </div>
                                 <div class="flex items-center justify-between p-4 border-t border-blue-gray-50">
-                                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">Page 1 of 2</p>
+                                    <p
+                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                        Page 1 of 2</p>
                                     <div class="flex gap-2">
-                                        <button class="select-none rounded-lg border border-gray-900 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">Previous</button>
-                                        <button class="select-none rounded-lg border border-gray-900 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">Next</button>
+                                        <button
+                                            class="select-none rounded-lg border border-gray-900 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                            type="button">Previous</button>
+                                        <button
+                                            class="select-none rounded-lg border border-gray-900 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                            type="button">Next</button>
                                     </div>
                                 </div>
                             </div>
@@ -724,34 +977,38 @@
                                         <p id="viewer-email">john.davis@email.com</p>
                                         <p id="viewer-phone">+1 (555) 123-4567</p>
                                     </div>
-                                    
+
                                     <div class="detail-section">
                                         <h5>Position Applied</h5>
                                         <p id="viewer-position">Frontend Developer at TechCorp</p>
                                     </div>
-                                    
+
                                     <div class="detail-section">
                                         <h5>Experience</h5>
                                         <p id="viewer-experience">5 years in React, JavaScript, TypeScript</p>
                                     </div>
-                                    
+
                                     <div class="detail-section">
                                         <h5>Skills</h5>
-                                        <div class="skills-tags" id="viewer-skills"><span class="skill-tag">React</span><span class="skill-tag">JavaScript</span><span class="skill-tag">TypeScript</span><span class="skill-tag">CSS</span></div>
+                                        <div class="skills-tags" id="viewer-skills"><span
+                                                class="skill-tag">React</span><span
+                                                class="skill-tag">JavaScript</span><span
+                                                class="skill-tag">TypeScript</span><span class="skill-tag">CSS</span>
+                                        </div>
                                     </div>
-                                    
+
                                     <div class="detail-section">
                                         <h5>Status</h5>
                                         <span class="status-badge interviewing" id="viewer-status">Interviewing</span>
                                     </div>
-                                    
+
                                     <div class="detail-section">
                                         <h5>Match Score</h5>
                                         <div class="match-circle">
                                             <span id="viewer-match">85%</span>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="detail-section">
                                         <h5>Resume</h5>
                                         <button class="secondary-button">
@@ -759,12 +1016,12 @@
                                             View Formatted Resume
                                         </button>
                                     </div>
-                                    
+
                                     <div class="detail-section">
                                         <h5>Notes</h5>
                                         <textarea placeholder="Add notes about this candidate..." rows="3"></textarea>
                                     </div>
-                                    
+
                                     <div class="viewer-actions">
                                         <button class="action-btn primary">
                                             <i class="fas fa-calendar"></i>
@@ -787,7 +1044,7 @@
                         <h1>Resume Ingestion</h1>
                         <p>Upload and process candidate resumes</p>
                     </div>
-                    
+
                     <div class="ingestion-content">
                         <div class="ingestion-grid">
                             <!-- File Upload Section -->
@@ -899,5 +1156,8 @@
     </div>
 
     <script src="scripts/main.js"></script>
+    <script src="https://unpkg.com/@material-tailwind/html@latest/dist/material-tailwind.min.js"></script>
+
 </body>
+
 </html>

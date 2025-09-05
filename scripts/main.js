@@ -76,6 +76,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Setup search functionality
     setupSearch();
     
+    // Setup table row click handlers
+    setupTableRowClickHandlers();
+    
     // Show default applicant in viewer
     setTimeout(() => {
         if (currentPage === 'applicants') {
@@ -366,6 +369,21 @@ function filterApplicants() {
             row.style.display = 'grid';
         } else {
             row.style.display = 'none';
+        }
+    });
+}
+
+// Table row click handlers
+function setupTableRowClickHandlers() {
+    document.addEventListener('click', function(e) {
+        const tableRow = e.target.closest('.table-row');
+        
+        if (tableRow && !e.target.closest('.action-button')) {
+            // Don't trigger if clicking on action buttons
+            const applicantId = tableRow.getAttribute('data-applicant-id');
+            if (applicantId) {
+                showApplicantViewer(applicantId);
+            }
         }
     });
 }

@@ -3,8 +3,8 @@ let currentRole = 'Recruiter';
 let currentPage = 'dashboard';
 let sidebarCollapsed = false;
 
-// Mock applicant data
-const applicantData = {
+// Mock candidate data
+const candidateData = {
     1: {
         name: "John Davis",
         email: "john.davis@email.com",
@@ -79,10 +79,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Setup table row click handlers
     setupTableRowClickHandlers();
     
-    // Show default applicant in viewer
+    // Show default candidate in viewer
     setTimeout(() => {
-        if (currentPage === 'applicants') {
-            showApplicantViewer(1);
+        if (currentPage === 'candidates') {
+            showCandidateViewer(1);
         }
     }, 100);
 });
@@ -193,7 +193,7 @@ function updateDashboardForRole(role) {
     const metrics = {
         'Recruiter': {
             'Active Jobs': '24',
-            'Total Applicants': '156',
+            'Total Candidates': '156',
             'Interviews This Week': '8',
             'Avg. Time to Close': '12 days'
         },
@@ -255,10 +255,10 @@ function showPage(pageId) {
     
     currentPage = pageId;
     
-    // Initialize applicant viewer for applicants page
-    if (pageId === 'applicants') {
+    // Initialize candidate viewer for candidates page
+    if (pageId === 'candidates') {
         setTimeout(() => {
-            showApplicantViewer(1);
+            showCandidateViewer(1);
         }, 100);
     }
 }
@@ -272,57 +272,80 @@ function showSettings() {
 // Sidebar toggle functionality
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
-    sidebarCollapsed = !sidebarCollapsed;
+    const toggleButton = document.querySelector('.sidebar-toggle');
+    const navTexts = document.querySelectorAll('.nav-item span');
     
     if (sidebarCollapsed) {
-        sidebar.classList.add('collapsed');
-    } else {
+        // Expanding: sidebar expands first, then text fades in
         sidebar.classList.remove('collapsed');
+        toggleButton.classList.remove('collapsed');
+        
+        // Wait for sidebar expansion to complete, then fade in text
+        setTimeout(() => {
+            navTexts.forEach(span => {
+                span.style.opacity = '1';
+            });
+        }, 300); // Wait for sidebar width transition
+        
+        sidebarCollapsed = false;
+    } else {
+        // Collapsing: text fades out first, then sidebar collapses
+        navTexts.forEach(span => {
+            span.style.opacity = '0';
+        });
+        
+        // Wait for text fade out, then collapse sidebar
+        setTimeout(() => {
+            sidebar.classList.add('collapsed');
+            toggleButton.classList.add('collapsed');
+        }, 200); // Wait for text fade out
+        
+        sidebarCollapsed = true;
     }
 }
 
-// Applicant viewer functionality
-function showApplicantViewer(applicantId) {
-    const viewer = document.getElementById('applicant-viewer');
+// Candidate viewer functionality
+function showCandidateViewer(candidateId) {
+    const viewer = document.getElementById('candidate-viewer');
     const emptyState = document.getElementById('empty-state');
     const profileContent = document.getElementById('profile-content');
-    const applicant = applicantData[applicantId];
+    const candidate = candidateData[candidateId];
     
-    if (!applicant) return;
+    if (!candidate) return;
     
     // Hide empty state and show profile content
     emptyState.classList.add('hidden');
     profileContent.classList.remove('hidden');
     
     // Update viewer content
-    document.getElementById('viewer-avatar').textContent = applicant.avatar;
-    document.getElementById('viewer-name').textContent = applicant.name;
-    document.getElementById('viewer-email').textContent = applicant.email;
-    document.getElementById('viewer-phone').textContent = applicant.phone;
-    document.getElementById('viewer-position').textContent = applicant.position;
-    document.getElementById('viewer-experience').textContent = applicant.experience;
-    document.getElementById('viewer-match').textContent = applicant.match;
+    document.getElementById('viewer-avatar').textContent = candidate.avatar;
+    document.getElementById('viewer-name').textContent = candidate.name;
+    document.getElementById('viewer-email').textContent = candidate.email;
+    document.getElementById('viewer-phone').textContent = candidate.phone;
+    document.getElementById('viewer-position').textContent = candidate.position;
+    document.getElementById('viewer-experience').textContent = candidate.experience;
+    document.getElementById('viewer-match').textContent = candidate.match;
     
     // Update skills
     const skillsContainer = document.getElementById('viewer-skills');
-    skillsContainer.innerHTML = applicant.skills.map(skill => 
+    skillsContainer.innerHTML = candidate.skills.map(skill => 
         `<span class="skill-tag">${skill}</span>`
     ).join('');
     
     // Update status
     const statusElement = document.getElementById('viewer-status');
-    statusElement.textContent = applicant.status.charAt(0).toUpperCase() + applicant.status.slice(1);
-    statusElement.className = `status-badge ${applicant.status}`;
+    statusElement.textContent = candidate.status.charAt(0).toUpperCase() + candidate.status.slice(1);
+    statusElement.className = `status-badge ${candidate.status}`;
     
     // Highlight selected row
     document.querySelectorAll('.table-row').forEach(row => row.classList.remove('selected'));
-    const selectedRow = document.querySelector(`[data-applicant-id="${applicantId}"]`);
+    const selectedRow = document.querySelector(`[data-candidate-id="${candidateId}"]`);
     if (selectedRow) {
         selectedRow.classList.add('selected');
     }
 }
 
-function closeApplicantViewer() {
+function closeCandidateViewer() {
     const emptyState = document.getElementById('empty-state');
     const profileContent = document.getElementById('profile-content');
     
@@ -336,26 +359,26 @@ function closeApplicantViewer() {
 
 // Search functionality
 function setupSearch() {
-    const searchInput = document.getElementById('applicant-search');
+    const searchInput = document.getElementById('candidate-search');
     const statusFilter = document.getElementById('status-filter');
     
     if (searchInput) {
-        searchInput.addEventListener('input', filterApplicants);
+        searchInput.addEventListener('input', filterCandidates);
     }
     
     if (statusFilter) {
-        statusFilter.addEventListener('change', filterApplicants);
+        statusFilter.addEventListener('change', filterCandidates);
     }
 }
 
-function filterApplicants() {
-    const searchTerm = document.getElementById('applicant-search').value.toLowerCase();
+function filterCandidates() {
+    const searchTerm = document.getElementById('candidate-search').value.toLowerCase();
     const statusFilter = document.getElementById('status-filter').value;
     const rows = document.querySelectorAll('.table-row');
     
     rows.forEach(row => {
-        const name = row.querySelector('.applicant-name').textContent.toLowerCase();
-        const email = row.querySelector('.applicant-email').textContent.toLowerCase();
+        const name = row.querySelector('.candidate-name').textContent.toLowerCase();
+        const email = row.querySelector('.candidate-email').textContent.toLowerCase();
         const position = row.cells ? row.cells[1].textContent.toLowerCase() : row.children[1].textContent.toLowerCase();
         const status = row.querySelector('.status-badge').textContent.toLowerCase();
         
@@ -380,9 +403,9 @@ function setupTableRowClickHandlers() {
         
         if (tableRow && !e.target.closest('.action-button')) {
             // Don't trigger if clicking on action buttons
-            const applicantId = tableRow.getAttribute('data-applicant-id');
-            if (applicantId) {
-                showApplicantViewer(applicantId);
+            const candidateId = tableRow.getAttribute('data-candidate-id');
+            if (candidateId) {
+                showCandidateViewer(candidateId);
             }
         }
     });
@@ -492,8 +515,8 @@ document.addEventListener('click', function(e) {
         
         if (text.includes('Post New Job')) {
             alert('Opening job posting form...');
-        } else if (text.includes('Add Applicant')) {
-            alert('Opening add applicant form...');
+        } else if (text.includes('Add Candidate')) {
+            alert('Opening add candidate form...');
         } else if (text.includes('Scan Outlook Inbox')) {
             const startDate = document.getElementById('start-date').value;
             const endDate = document.getElementById('end-date').value;
@@ -538,7 +561,7 @@ document.addEventListener('keydown', function(e) {
     // Ctrl/Cmd + number keys for quick navigation
     if ((e.ctrlKey || e.metaKey) && e.key >= '1' && e.key <= '4') {
         e.preventDefault();
-        const pages = ['dashboard', 'jobs', 'applicants', 'ingestion'];
+        const pages = ['dashboard', 'jobs', 'candidates', 'ingestion'];
         const pageIndex = parseInt(e.key) - 1;
         if (pages[pageIndex]) {
             showPage(pages[pageIndex]);
@@ -567,6 +590,6 @@ window.GrayMatter = {
     signIn,
     signOut,
     toggleSidebar,
-    showApplicantViewer,
-    closeApplicantViewer
+    showCandidateViewer,
+    closeCandidateViewer
 };

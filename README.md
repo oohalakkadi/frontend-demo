@@ -9,7 +9,7 @@ A modern, static frontend for a comprehensive recruitment management system buil
 - **Responsive Design**: Works on desktop and mobile devices
 - **Interactive Dashboard**: Role-specific metrics and activity feeds
 - **Job Management**: Post, view, and manage job listings
-- **Applicant Tracking**: View and manage candidate applications
+- **Candidate Tracking**: View and manage candidate applications
 - **Resume Ingestion**: Upload and process candidate resumes
 - **Admin Features**: Audit trail, validation, and company settings
 
@@ -72,8 +72,8 @@ A modern, static frontend for a comprehensive recruitment management system buil
 - Job status tracking (Open/Closed)
 - Job posting interface
 
-### Applicant Management
-- Applicant database with search
+### Candidate Management
+- Candidate database with search
 - Matching scores and status tracking
 - Interview scheduling
 

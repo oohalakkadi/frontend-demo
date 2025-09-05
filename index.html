@@ -52,7 +52,7 @@
             <div class="header-content">
                 <div class="header-left">
                     <button class="sidebar-toggle" onclick="toggleSidebar()">
-                        <i class="fas fa-bars"></i>
+                        <i class="fas fa-chevron-left"></i>
                     </button>
                     <div class="logo"><i class="fas fa-brain"></i> Gray Matter <span class="company-tag">by Buxton Consulting</span></div>
                 </div>
@@ -106,9 +106,9 @@
                     <i class="fas fa-briefcase"></i>
                     <span>My Jobs</span>
                 </div>
-                <div class="nav-item" data-page="applicants" onclick="showPage('applicants')">
+                <div class="nav-item" data-page="candidates" onclick="showPage('candidates')">
                     <i class="fas fa-users"></i>
-                    <span>Applicants</span>
+                    <span>Candidates</span>
                 </div>
                 <div class="nav-item" data-page="ingestion" onclick="showPage('ingestion')">
                     <i class="fas fa-upload"></i>
@@ -164,7 +164,7 @@
                                 <i class="fas fa-users"></i>
                             </div>
                             <div class="metric-info">
-                                <h3>Total Applicants</h3>
+                                <h3>Total Candidates</h3>
                                 <div class="metric-value">156</div>
                                 <div class="progress-ring">
                                     <svg width="60" height="60">
@@ -212,7 +212,7 @@
                             <div class="activity-item">
                                 <i class="fas fa-user-plus"></i>
                                 <div class="activity-content">
-                                    <span>New applicant for Senior Developer position</span>
+                                    <span>New candidate for Senior Developer position</span>
                                     <small>2 hours ago</small>
                                 </div>
                             </div>
@@ -264,7 +264,7 @@
                                 <p><i class="fas fa-calendar"></i> Posted 3 days ago</p>
                             </div>
                             <div class="job-stats">
-                                <span><i class="fas fa-users"></i> 12 applicants</span>
+                                <span><i class="fas fa-users"></i> 12 candidates</span>
                                 <span><i class="fas fa-eye"></i> 156 views</span>
                             </div>
                         </div>
@@ -280,31 +280,31 @@
                                 <p><i class="fas fa-calendar"></i> Posted 1 week ago</p>
                             </div>
                             <div class="job-stats">
-                                <span><i class="fas fa-users"></i> 8 applicants</span>
+                                <span><i class="fas fa-users"></i> 8 candidates</span>
                                 <span><i class="fas fa-eye"></i> 89 views</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Applicants Page -->
-                <div id="applicants-page" class="content-page">
+                <!-- Candidates Page -->
+                <div id="candidates-page" class="content-page">
                     <div class="page-header">
-                        <h1>Applicants</h1>
+                        <h1>Candidates</h1>
                         <button class="primary-button">
                             <i class="fas fa-plus"></i>
-                            Add Applicant
+                            Add Candidate
                         </button>
                     </div>
                     
-                    <div class="applicants-container">
-                        <!-- Applicants Table -->
-                        <div class="applicants-table-container">
+                    <div class="candidates-container">
+                        <!-- Candidates Table -->
+                        <div class="candidates-table-container">
                             <!-- Search Bar -->
                             <div class="search-container">
                                 <div class="search-input-group">
                                     <i class="fas fa-search"></i>
-                                    <input type="text" placeholder="Search applicants..." id="applicant-search">
+                                    <input type="text" placeholder="Search candidates..." id="candidate-search">
                                 </div>
                                 <div class="filter-dropdown">
                                     <select id="status-filter">
@@ -318,7 +318,7 @@
                                 </div>
                             </div>
 
-                            <div class="applicants-table">
+                            <div class="candidates-table">
                                 <div class="table-header">
                                     <div class="table-cell">Name</div>
                                     <div class="table-cell">Position</div>
@@ -327,13 +327,13 @@
                                     <div class="table-cell">Actions</div>
                                 </div>
                                 
-                                <div class="table-row" data-applicant-id="1">
+                                <div class="table-row" data-candidate-id="1">
                                     <div class="table-cell">
-                                        <div class="applicant-info">
-                                            <div class="applicant-avatar">JD</div>
+                                        <div class="candidate-info">
+                                            <div class="candidate-avatar">JD</div>
                                             <div>
-                                                <div class="applicant-name">John Davis</div>
-                                                <div class="applicant-email">john.davis@email.com</div>
+                                                <div class="candidate-name">John Davis</div>
+                                                <div class="candidate-email">john.davis@email.com</div>
                                             </div>
                                         </div>
                                     </div>
@@ -345,7 +345,7 @@
                                         <div class="match-score">85%</div>
                                     </div>
                                     <div class="table-cell">
-                                        <button class="action-button" onclick="showApplicantViewer(1)">
+                                        <button class="action-button" onclick="showCandidateViewer(1)">
                                             <i class="fas fa-eye"></i>
                                         </button>
                                         <button class="action-button">
@@ -354,13 +354,13 @@
                                     </div>
                                 </div>
 
-                                <div class="table-row" data-applicant-id="2">
+                                <div class="table-row" data-candidate-id="2">
                                     <div class="table-cell">
-                                        <div class="applicant-info">
-                                            <div class="applicant-avatar">SM</div>
+                                        <div class="candidate-info">
+                                            <div class="candidate-avatar">SM</div>
                                             <div>
-                                                <div class="applicant-name">Sarah Miller</div>
-                                                <div class="applicant-email">sarah.miller@email.com</div>
+                                                <div class="candidate-name">Sarah Miller</div>
+                                                <div class="candidate-email">sarah.miller@email.com</div>
                                             </div>
                                         </div>
                                     </div>
@@ -372,7 +372,7 @@
                                         <div class="match-score">92%</div>
                                     </div>
                                     <div class="table-cell">
-                                        <button class="action-button" onclick="showApplicantViewer(2)">
+                                        <button class="action-button" onclick="showCandidateViewer(2)">
                                             <i class="fas fa-eye"></i>
                                         </button>
                                         <button class="action-button">
@@ -381,13 +381,13 @@
                                     </div>
                                 </div>
 
-                                <div class="table-row" data-applicant-id="3">
+                                <div class="table-row" data-candidate-id="3">
                                     <div class="table-cell">
-                                        <div class="applicant-info">
-                                            <div class="applicant-avatar">MJ</div>
+                                        <div class="candidate-info">
+                                            <div class="candidate-avatar">MJ</div>
                                             <div>
-                                                <div class="applicant-name">Michael Johnson</div>
-                                                <div class="applicant-email">m.johnson@email.com</div>
+                                                <div class="candidate-name">Michael Johnson</div>
+                                                <div class="candidate-email">m.johnson@email.com</div>
                                             </div>
                                         </div>
                                     </div>
@@ -399,7 +399,7 @@
                                         <div class="match-score">67%</div>
                                     </div>
                                     <div class="table-cell">
-                                        <button class="action-button" onclick="showApplicantViewer(3)">
+                                        <button class="action-button" onclick="showCandidateViewer(3)">
                                             <i class="fas fa-eye"></i>
                                         </button>
                                         <button class="action-button">
@@ -408,13 +408,13 @@
                                     </div>
                                 </div>
 
-                                <div class="table-row" data-applicant-id="4">
+                                <div class="table-row" data-candidate-id="4">
                                     <div class="table-cell">
-                                        <div class="applicant-info">
-                                            <div class="applicant-avatar">AB</div>
+                                        <div class="candidate-info">
+                                            <div class="candidate-avatar">AB</div>
                                             <div>
-                                                <div class="applicant-name">Alice Brown</div>
-                                                <div class="applicant-email">alice.brown@email.com</div>
+                                                <div class="candidate-name">Alice Brown</div>
+                                                <div class="candidate-email">alice.brown@email.com</div>
                                             </div>
                                         </div>
                                     </div>
@@ -426,7 +426,7 @@
                                         <div class="match-score">96%</div>
                                     </div>
                                     <div class="table-cell">
-                                        <button class="action-button" onclick="showApplicantViewer(4)">
+                                        <button class="action-button" onclick="showCandidateViewer(4)">
                                             <i class="fas fa-eye"></i>
                                         </button>
                                         <button class="action-button">
@@ -435,13 +435,13 @@
                                     </div>
                                 </div>
 
-                                <div class="table-row" data-applicant-id="5">
+                                <div class="table-row" data-candidate-id="5">
                                     <div class="table-cell">
-                                        <div class="applicant-info">
-                                            <div class="applicant-avatar">RW</div>
+                                        <div class="candidate-info">
+                                            <div class="candidate-avatar">RW</div>
                                             <div>
-                                                <div class="applicant-name">Robert Wilson</div>
-                                                <div class="applicant-email">r.wilson@email.com</div>
+                                                <div class="candidate-name">Robert Wilson</div>
+                                                <div class="candidate-email">r.wilson@email.com</div>
                                             </div>
                                         </div>
                                     </div>
@@ -453,7 +453,7 @@
                                         <div class="match-score">78%</div>
                                     </div>
                                     <div class="table-cell">
-                                        <button class="action-button" onclick="showApplicantViewer(5)">
+                                        <button class="action-button" onclick="showCandidateViewer(5)">
                                             <i class="fas fa-eye"></i>
                                         </button>
                                         <button class="action-button">
@@ -464,21 +464,21 @@
                             </div>
                         </div>
 
-                        <!-- Applicant Viewer (Always Visible on Right) -->
-                        <div class="applicant-viewer" id="applicant-viewer">
+                        <!-- Candidate Viewer (Always Visible on Right) -->
+                        <div class="candidate-viewer" id="candidate-viewer">
                             <div class="viewer-header">
-                                <h3>Applicant Profile</h3>
+                                <h3>Candidate Profile</h3>
                             </div>
                             <div class="viewer-content">
                                 <div class="empty-state" id="empty-state">
                                     <i class="fas fa-user-circle"></i>
-                                    <p>Select an applicant to view details</p>
+                                    <p>Select an candidate to view details</p>
                                 </div>
                                 <div class="profile-content hidden" id="profile-content">
-                                    <div class="applicant-photo">
+                                    <div class="candidate-photo">
                                         <div class="photo-placeholder" id="viewer-avatar">JD</div>
                                     </div>
-                                    <div class="applicant-details">
+                                    <div class="candidate-details">
                                         <h4 id="viewer-name">John Davis</h4>
                                         <p id="viewer-email">john.davis@email.com</p>
                                         <p id="viewer-phone">+1 (555) 123-4567</p>
@@ -526,7 +526,7 @@
                                     
                                     <div class="detail-section">
                                         <h5>Notes</h5>
-                                        <textarea placeholder="Add notes about this applicant..." rows="3"></textarea>
+                                        <textarea placeholder="Add notes about this candidate..." rows="3"></textarea>
                                     </div>
                                     
                                     <div class="viewer-actions">

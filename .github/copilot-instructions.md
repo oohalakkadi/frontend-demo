@@ -29,7 +29,7 @@ The system supports 4 user roles with specific permissions:
 - Role-based navigation and content visibility
 - Interactive dashboard with role-specific metrics
 - Job management with status tracking
-- Applicant database with matching scores
+- Candidate database with matching scores
 - Resume upload and processing interface
 - Mock authentication flow
 

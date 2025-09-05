@@ -198,6 +198,14 @@ h1, h2, h3, h4, h5, h6 {
     background: #f7fafc;
 }
 
+.sidebar-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.sidebar-toggle.collapsed i {
+    transform: rotate(180deg);
+}
+
 .header .logo {
     font-size: 1.5rem;
     color: #4a5568;
@@ -335,12 +343,13 @@ h1, h2, h3, h4, h5, h6 {
     border-right: 1px solid #e2e8f0;
     padding: 2rem 0;
     position: relative;
-    transition: margin-left 0.3s ease;
+    transition: width 0.3s ease;
     flex-shrink: 0;
+    overflow: hidden;
 }
 
 .sidebar.collapsed {
-    margin-left: -250px;
+    width: 70px;
 }
 
 .nav-item {
@@ -352,6 +361,12 @@ h1, h2, h3, h4, h5, h6 {
     transition: all 0.2s ease;
     color: #4a5568;
     border-right: 3px solid transparent;
+    white-space: nowrap;
+}
+
+.sidebar.collapsed .nav-item {
+    padding: 0.75rem 1.25rem;
+    justify-content: flex-start;
 }
 
 .nav-item:hover {
@@ -368,12 +383,29 @@ h1, h2, h3, h4, h5, h6 {
 .nav-item i {
     width: 1.25rem;
     text-align: center;
+    flex-shrink: 0;
+}
+
+.nav-item span {
+    transition: opacity 0.2s ease;
+    overflow: hidden;
+}
+
+.sidebar.collapsed .nav-item span {
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
 }
 
 .nav-divider {
     height: 1px;
     background: #e2e8f0;
     margin: 1rem 2rem;
+    transition: margin 0.3s ease;
+}
+
+.sidebar.collapsed .nav-divider {
+    margin: 1rem 1.25rem;
 }
 
 /* Content Area */
@@ -756,20 +788,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Table Styles */
-.applicants-container {
+.candidates-container {
     display: flex;
     gap: 2rem;
     height: calc(100vh - 12rem);
 }
 
-.applicants-table-container {
+.candidates-table-container {
     /* flex: 1; */
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 
-.applicant-viewer {
+.candidate-viewer {
     width: 400px;
     background: white;
     border-radius: 12px;
@@ -821,7 +853,7 @@ h1, h2, h3, h4, h5, h6 {
     flex: 1;
 }
 
-.applicant-photo {
+.candidate-photo {
     text-align: center;
     margin-bottom: 1.5rem;
 }
@@ -839,17 +871,17 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.25rem;
 }
 
-.applicant-details {
+.candidate-details {
     text-align: center;
     margin-bottom: 2rem;
 }
 
-.applicant-details h4 {
+.candidate-details h4 {
     margin: 0 0 0.5rem 0;
     color: #2d3748;
 }
 
-.applicant-details p {
+.candidate-details p {
     margin: 0.25rem 0;
     color: #718096;
     font-size: 0.875rem;
@@ -976,7 +1008,7 @@ h1, h2, h3, h4, h5, h6 {
     background: #e2e8f0;
 }
 
-.applicants-table {
+.candidates-table {
     background: white;
     border-radius: 12px;
     border: 1px solid #e2e8f0;
@@ -1047,13 +1079,13 @@ h1, h2, h3, h4, h5, h6 {
     gap: 0.5rem;
 }
 
-.applicant-info {
+.candidate-info {
     display: flex;
     align-items: center;
     gap: 0.75rem;
 }
 
-.applicant-avatar {
+.candidate-avatar {
     width: 2.5rem;
     height: 2.5rem;
     background: #e2e8f0;
@@ -1066,12 +1098,12 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.875rem;
 }
 
-.applicant-name {
+.candidate-name {
     font-weight: 600;
     color: #2d3748;
 }
 
-.applicant-email {
+.candidate-email {
     font-size: 0.875rem;
     color: #718096;
 }
@@ -1308,15 +1340,21 @@ h1, h2, h3, h4, h5, h6 {
         border-right: none;
         border-bottom: 1px solid #e2e8f0;
         padding: 1rem 0;
-        margin-left: 0;
+        transition: margin-left 0.3s ease;
     }
     
     .sidebar.collapsed {
         margin-left: -100%;
+        width: 100%;
     }
     
     .nav-item {
         padding: 0.75rem 1rem;
+    }
+    
+    .sidebar.collapsed .nav-item {
+        padding: 0.75rem 1rem;
+        justify-content: flex-start;
     }
     
     .content-area {
@@ -1331,12 +1369,12 @@ h1, h2, h3, h4, h5, h6 {
         grid-template-columns: 1fr;
     }
     
-    .applicants-container {
+    .candidates-container {
         flex-direction: column;
         height: auto;
     }
     
-    .applicant-viewer {
+    .candidate-viewer {
         width: 100%;
         max-height: 60vh;
     }

@@ -9,10 +9,15 @@ const candidateData = {
         name: "John Davis",
         email: "john.davis@email.com",
         phone: "+1 (555) 123-4567",
-        position: "Frontend Developer",
+        location: "Melbourne, VIC",
+        latestRole: "Frontend Developer",
+        company: "TechCorp",
+        employment: "Employee",
         experience: "5 years in React, JavaScript, TypeScript",
         skills: ["React", "JavaScript", "TypeScript", "CSS"],
         status: "interviewing",
+        availability: "15/01/2025",
+        lastActive: "02/01/2025",
         match: "85%",
         avatar: "JD"
     },
@@ -20,10 +25,15 @@ const candidateData = {
         name: "Sarah Miller",
         email: "sarah.miller@email.com",
         phone: "+1 (555) 987-6543",
-        position: "DevOps Engineer",
+        location: "Sydney, NSW",
+        latestRole: "DevOps Engineer",
+        company: "CloudTech",
+        employment: "Subcontractor",
         experience: "7 years in AWS, Docker, Kubernetes",
         skills: ["AWS", "Docker", "Kubernetes", "Python"],
-        status: "applied",
+        status: "on-project",
+        availability: "01/03/2025",
+        lastActive: "28/12/2024",
         match: "92%",
         avatar: "SM"
     },
@@ -31,10 +41,15 @@ const candidateData = {
         name: "Michael Johnson",
         email: "m.johnson@email.com",
         phone: "+1 (555) 456-7890",
-        position: "Backend Developer",
+        location: "Brisbane, QLD",
+        latestRole: "Backend Developer",
+        company: "DataSoft",
+        employment: "Applicant",
         experience: "3 years in Node.js, MongoDB",
         skills: ["Node.js", "MongoDB", "Express", "REST APIs"],
         status: "rejected",
+        availability: "20/01/2025",
+        lastActive: "05/01/2025",
         match: "67%",
         avatar: "MJ"
     },
@@ -42,10 +57,15 @@ const candidateData = {
         name: "Alice Brown",
         email: "alice.brown@email.com",
         phone: "+1 (555) 321-0987",
-        position: "UI/UX Designer",
+        location: "Perth, WA",
+        latestRole: "UI/UX Designer",
+        company: "DesignLab",
+        employment: "Employee",
         experience: "6 years in design systems, user research",
         skills: ["Figma", "Adobe XD", "User Research", "Prototyping"],
         status: "hired",
+        availability: "Available now",
+        lastActive: "04/01/2025",
         match: "96%",
         avatar: "AB"
     },
@@ -53,10 +73,15 @@ const candidateData = {
         name: "Robert Wilson",
         email: "r.wilson@email.com",
         phone: "+1 (555) 654-3210",
-        position: "Data Scientist",
+        location: "Adelaide, SA",
+        latestRole: "Data Scientist",
+        company: "AnalyticsPro",
+        employment: "Subcontractor",
         experience: "4 years in machine learning, Python",
         skills: ["Python", "TensorFlow", "SQL", "Machine Learning"],
         status: "screening",
+        availability: "10/02/2025",
+        lastActive: "30/12/2024",
         match: "78%",
         avatar: "RW"
     }
@@ -317,12 +342,12 @@ function showCandidateViewer(candidateId) {
     emptyState.classList.add('hidden');
     profileContent.classList.remove('hidden');
     
-    // Update viewer content
+    // Update viewer content with new fields
     document.getElementById('viewer-avatar').textContent = candidate.avatar;
     document.getElementById('viewer-name').textContent = candidate.name;
     document.getElementById('viewer-email').textContent = candidate.email;
     document.getElementById('viewer-phone').textContent = candidate.phone;
-    document.getElementById('viewer-position').textContent = candidate.position;
+    document.getElementById('viewer-position').textContent = `${candidate.latestRole} at ${candidate.company}`;
     document.getElementById('viewer-experience').textContent = candidate.experience;
     document.getElementById('viewer-match').textContent = candidate.match;
     
@@ -334,12 +359,14 @@ function showCandidateViewer(candidateId) {
     
     // Update status
     const statusElement = document.getElementById('viewer-status');
-    statusElement.textContent = candidate.status.charAt(0).toUpperCase() + candidate.status.slice(1);
+    const statusText = candidate.status === 'on-project' ? 'On a project' : 
+                     candidate.status.charAt(0).toUpperCase() + candidate.status.slice(1);
+    statusElement.textContent = statusText;
     statusElement.className = `status-badge ${candidate.status}`;
     
     // Highlight selected row
-    document.querySelectorAll('.table-row').forEach(row => row.classList.remove('selected'));
-    const selectedRow = document.querySelector(`[data-candidate-id="${candidateId}"]`);
+    document.querySelectorAll('tr[data-candidate-id]').forEach(row => row.classList.remove('selected'));
+    const selectedRow = document.querySelector(`tr[data-candidate-id="${candidateId}"]`);
     if (selectedRow) {
         selectedRow.classList.add('selected');
     }
@@ -354,7 +381,7 @@ function closeCandidateViewer() {
     profileContent.classList.add('hidden');
     
     // Remove selection from all rows
-    document.querySelectorAll('.table-row').forEach(row => row.classList.remove('selected'));
+    document.querySelectorAll('tr[data-candidate-id]').forEach(row => row.classList.remove('selected'));
 }
 
 // Search functionality
@@ -399,9 +426,9 @@ function filterCandidates() {
 // Table row click handlers
 function setupTableRowClickHandlers() {
     document.addEventListener('click', function(e) {
-        const tableRow = e.target.closest('.table-row');
+        const tableRow = e.target.closest('tr[data-candidate-id]');
         
-        if (tableRow && !e.target.closest('.action-button')) {
+        if (tableRow && !e.target.closest('button')) {
             // Don't trigger if clicking on action buttons
             const candidateId = tableRow.getAttribute('data-candidate-id');
             if (candidateId) {
